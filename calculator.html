@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator Form</title>
+    <style>
+        .calc-box {
+            border: 2px solid #6b90d5;
+            width: 280px;
+            padding: 15px;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+        }
+
+        .calc-box h4 {
+            margin: 0 0 10px 0;
+        }
+
+        .form-row {
+            margin-bottom: 8px;
+        }
+
+        .btn-group {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="calc-box">
+        <h4>Calculator</h4>
+
+        <div class="form-row">
+            <label for="num1">Number 1: </label>
+            <input type="text" id="num1">
+        </div>
+
+        <div class="form-row">
+            <label for="num2">Number 2: </label>
+            <input type="text" id="num2">
+        </div>
+
+        <div class="btn-group">
+            <button type="button" onclick="compute('add')">Add</button>
+            <button type="button" onclick="compute('multiply')">Multiply</button>
+            <button type="button" onclick="compute('divide')">Divide</button>
+        </div>
+
+        <div class="form-row">
+            <label for="result">Result: </label>
+            <input type="text" id="result" readonly>
+        </div>
+    </div>
+
+    <script>
+        function compute(operation) {
+            const n1 = parseFloat(document.getElementById('num1').value);
+            const n2 = parseFloat(document.getElementById('num2').value);
+            const resultField = document.getElementById('result');
+
+            if (isNaN(n1) || isNaN(n2)) {
+                alert("Please enter valid numbers");
+                return;
+            }
+
+            if (operation === 'add') {
+                resultField.value = n1 + n2;
+            } else if (operation === 'multiply') {
+                resultField.value = n1 * n2;
+            } else if (operation === 'divide') {
+                resultField.value = n2 !== 0 ? (n1 / n2) : "Cannot divide by 0";
+            }
+        }
+    </script>
+
+</body>
+
+</html>
